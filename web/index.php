@@ -18,20 +18,34 @@
 
 require_once('./LINEBotTiny.php');
 
-$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('VI92++JtF1wfInMaIZ1OX0Axv570xKaSXSK4bbdd8+4npD3fnh3eQ7X1hABe+6upum27cZEwED/se2pUhqxfpCnqKLTvjrA72cugwD9LehmXHMIv7DngRvdHNZYUnhBbZujWstjCZ7iRLLor8XG87QdB04t89/1O/w1cDnyilFU=
-');
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('network healthy');
-$textMessageBuilder2 = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('network failure');
-$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '584245da1c393666a1585c7d7c6229de']);
-$response = $bot->pushMessage('<to>', $textMessageBuilder);
-$response2 = $bot->pushMessage('<to>', $textMessageBuilder2);
 
 $arr_file_test = get_headers("http://rd.jtron-tech.com/jessica/login.jsp");
 $test = stripos($arr_file_test[0],'ok');
 if($test!=''){
- echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-}else{
- echo $response2->getHTTPStatus() . ' ' . $response2->getRawBody();
+   "replyToken": "VI92++JtF1wfInMaIZ1OX0Axv570xKaSXSK4bbdd8+4npD3fnh3eQ7X1hABe+6upum27cZEwED/se2pUhqxfpCnqKLTvjrA72cugwD9LehmXHMIv7DngRvdHNZYUnhBbZujWstjCZ7iRLLor8XG87QdB04t89/1O/w1cDnyilFU=
+",
+        "type": "message",
+        "source": {
+             "type": "user",
+             "userId": "U5b79d04342c1d382b92ea6359384a272"
+         },
+         "message": {
+             "id": "1551338644",
+             "type": "text",
+             "text": "Network_Health"
+         }
+else{
+ "replyToken": "VI92++JtF1wfInMaIZ1OX0Axv570xKaSXSK4bbdd8+4npD3fnh3eQ7X1hABe+6upum27cZEwED/se2pUhqxfpCnqKLTvjrA72cugwD9LehmXHMIv7DngRvdHNZYUnhBbZujWstjCZ7iRLLor8XG87QdB04t89/1O/w1cDnyilFU=
+",
+        "type": "message",
+        "source": {
+             "type": "user",
+             "userId": "U5b79d04342c1d382b92ea6359384a272"
+         },
+         "message": {
+             "id": "1551338644",
+             "type": "text",
+             "text": "Network_Failure"
 }
 ?>
