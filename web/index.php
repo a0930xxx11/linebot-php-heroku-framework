@@ -23,16 +23,15 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('VI92++JtF1wfInMaIZ1OX
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('network healthy');
 $textMessageBuilder2 = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('network failure');
-
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '584245da1c393666a1585c7d7c6229de']);
 $response = $bot->pushMessage('<to>', $textMessageBuilder);
 $response2 = $bot->pushMessage('<to>', $textMessageBuilder2);
 
-$str = exec("ping -n 1 -w 1 59.124.164.46", $input, $result);
-if ($result == 0){
-	echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+$arr_file_test = get_headers("http://rd.jtron-tech.com/jessica/login.jsp");
+$test = stripos($arr_file_test[0],'ok');
+if($test!=''){
+ echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 }else{
-echo $response2->getHTTPStatus() . ' ' . $response2->getRawBody();
+ echo $response2->getHTTPStatus() . ' ' . $response2->getRawBody();
 }
-
 ?>
