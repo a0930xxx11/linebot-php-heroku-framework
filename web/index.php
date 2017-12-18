@@ -22,15 +22,17 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('VI92++JtF1wfInMaIZ1OX
 ');
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('network healthy');
+$textMessageBuilder2 = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('network failure');
 
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '584245da1c393666a1585c7d7c6229de']);
 $response = $bot->pushMessage('<to>', $textMessageBuilder);
+$response2 = $bot->pushMessage('<to>', $textMessageBuilder2);
 
-$str = exec("ping -n 1 -w 1 192.168.1.5", $input, $result);
+$str = exec("ping -n 1 -w 1 59.124.164.46", $input, $result);
 if ($result == 0){
 	echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 }else{
-echo "off";
+echo $response2->getHTTPStatus() . ' ' . $response2->getRawBody();
 }
 
 ?>
