@@ -18,37 +18,19 @@
 
 require_once('./LINEBotTiny.php');
 
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('VI92++JtF1wfInMaIZ1OX0Axv570xKaSXSK4bbdd8+4npD3fnh3eQ7X1hABe+6upum27cZEwED/se2pUhqxfpCnqKLTvjrA72cugwD9LehmXHMIv7DngRvdHNZYUnhBbZujWstjCZ7iRLLor8XG87QdB04t89/1O/w1cDnyilFU=
+');
 
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('network healthy');
 
-$channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
-$channelSecret = getenv('LINE_CHANNEL_SECRET');
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '584245da1c393666a1585c7d7c6229de']);
+$response = $bot->pushMessage('<to>', $textMessageBuilder);
 
-$client = new LINEBotTiny($channelAccessToken, $channelSecret);
-foreach ($client->parseEvents() as $event) {
-    switch ($event['type']) {
-        case 'message':
-            $message = $event['message'];
-            switch ($message['type']) {
-                case 'text':
-                	$m_message = $message['text'];
-                	if($m_message!="")
-                	{
-                		$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $m_message
-                            )
-                        )
-                    	));
-                	}
-                    break;
-                
-            }
-            break;
-        default:
-            error_log("Unsupporeted event type: " . $event['type']);
-            break;
-    }
-};
+$str = exec("ping -n 1 -w 1 192.168.1.5", $input, $result);
+if ($result == 0){
+	echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+}else{
+echo "off";
+}
+
+?>
