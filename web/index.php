@@ -16,15 +16,13 @@
  */
 require_once('./LINEBotTiny.php');
 
-$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('VI92++JtF1wfInMaIZ1OX0Axv570xKaSXSK4bbdd8+4npD3fnh3eQ7X1hABe+6upum27cZEwED/se2pUhqxfpCnqKLTvjrA72cugwD9LehmXHMIv7DngRvdHNZYUnhBbZujWstjCZ7iRLLor8XG87QdB04t89/1O/w1cDnyilFU=
-');
-$bot = new \LINE\LINEBot($httpClient, ［'channelSecret' => '584245da1c393666a1585c7d7c6229de'］);
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Network_healthy');
-$response = $bot->pushMessage('U53b26389352e1aec3c8d724ebe8f20d3', $textMessageBuilder); 
-
 $arr_file_test = get_headers("http://rd.jtron-tech.com/jessica/login.jsp");
 $test = stripos($arr_file_test[0],'ok');
 if($test!=''){
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('VI92++JtF1wfInMaIZ1OX0Axv570xKaSXSK4bbdd8+4npD3fnh3eQ7X1hABe+6upum27cZEwED/se2pUhqxfpCnqKLTvjrA72cugwD9LehmXHMIv7DngRvdHNZYUnhBbZujWstjCZ7iRLLor8XG87QdB04t89/1O/w1cDnyilFU=');
+$bot = new \LINE\LINEBot($httpClient,['channelSecret' => '584245da1c393666a1585c7d7c6229de']);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('Network_healthy');
+$response = $bot->pushMessage('U53b26389352e1aec3c8d724ebe8f20d3', $textMessageBuilder); 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody(); 
          }
 ?>
